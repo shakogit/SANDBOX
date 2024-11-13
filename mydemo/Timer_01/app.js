@@ -1,52 +1,56 @@
-// timer display visual content After 30 seconds 5 minutes 1 hour
-let countdownData = new Date().setSeconds(new Date().getSeconds() + 12);
-//countdownData = new Date().setMinutes(new Date().getMinutes() + 5);
-//countdownData = new Date().setHours(new Date().getHours() + 1);
-// define constants grab the html elements
-const daysElem = document.getElementById('days'),
-hoursEleme = document.getElementById('hours'),
-minutesElem = document.getElementById('minutes'),
-secondsElem = document.getElementById('seconds'),
+/* 1 set countdown date as a future date with a (24 hour format) */
+// let countDownDate = new Date('01 January 2024 00:00'); 
+/* 2 set countdown date by adding hours to the current date */
+//let countDown =  new Date().setHours(new Date().getHours() + 1)
+/* 3 set countdown date by adding minutes to the current date */
+//let countDown =  new Date().setMinutes(new Date().getMinutes() + 5)
+/* 4 set countdown date by adding seconds to the current date */
+let countdownDate = new Date().setSeconds(new Date().getSeconds() + 12);
+/** set const for dom to grab html lists*/
 
-timer = document.getElementById('timer'),
-content = document.getElementById('content');
-// create startCountdown function
-const startCountdown = () => {
-const now = new Date().getTime()//<- return the stored time value in milliseconds
-// convert (countdownData) in milliseconds > via getTime() Method
-const countdown = new Date(countdownData).getTime();
-// create difference to calculate (now) & (countdownDate)
-const difference = (countdown - now) / 1000; // divide the diff. by 1000 to convert seconds
-if(difference < 1){
-    endCountdown();
-}
-// convert seconds to days by dividing the diff. in seconds by the walue of one day
-// diff / 60 seconds multyplay 60 minutes multyplay 24 hour
-let days = Math.floor(difference / (60 * 60 * 24)); // rounding neares value via Math.floor()
-let hours = Math.floor((difference % (60 * 60 * 24)) / (60 * 60)); // modul hour
-let minutes = Math.floor((difference % (60 * 60)) / 60); // module minutes
-let seconds = Math.floor(difference % 60); // module second
+let timerInterval
+const daysElem = document.querySelector("#days"),
+	hoursElem = document.querySelector("#hours"),
+	minutesElem = document.querySelector("#minutes"),
+	secondsElem = document.querySelector("#seconds"),
+	timerRunningContent = document.querySelector("#timer-running"),
+	timerEndContent = document.querySelector("#timer-end")
 
-// pass calculated values in  html elements
-daysElem.innerHTML = formatTime(days, "day");
-hoursEleme.innerHTML = formatTime(hours, "hour");
-minutesElem.innerHTML = formatTime(minutes, "minute");
-secondsElem.innerHTML = formatTime(seconds, "second");
-}
-
-// create function that format time units for innterHTML proccess < literal templates
+// set actual function
 const formatTime = (time, string) => {
-    return time == 1 ? `${time} ${string}` : `${time} ${string}s`;
+    return time == 1 ? `<span>${time}</span> ${string} `:` <span>${time}</span> ${string}'s`
 }
-// create timerInterval that runs function (countdown) at interval 1s
-let timerInterval;
-// define timerInterval as a set-interval function when the page loads
-window.addEventListener('load', () => {
-    startCountdown();
-    timerInterval = setInterval(startCountdown, 1000);
-});
+const startCountdown = () =>{
+    // we have current date and calculate different between current date and countdown date
+    const now = new Date().getTime() // > get (now) Date() in Milliseconds
+    const countdown = new Date(countdownDate).getTime() //convert const (countdownDate)in Milliseconds
+    const difference = (countdown - now) / 1000
+
+    if(difference < 1){
+        endCountdown()
+    }
+    
+    let days = Math.floor(difference / (60*60*24));
+    //console.log(days);
+    let hours = Math.floor((difference % (60*60*24)) / (60*60));
+    //console.log(hours);
+    let minutes = Math.floor((difference % (60*60)) / 60);
+    //console.log(minutes);
+    let seconds = Math.floor(difference % 60);
+   // console.log(seconds);
+
+   // set innerHtml
+   daysElem.innerHTML = formatTime(days, 'day')
+   hoursElem.innerHTML = formatTime(hours, 'hour')
+   minutesElem.innerHTML = formatTime(minutes, 'minute')
+   secondsElem.innerHTML = formatTime(seconds, 'second')
+}
 const endCountdown = () =>{
-    clearInterval(timerInterval);
-    timer.remove();
-    content.classList.add('visible');
+    clearInterval(timerInterval) // clear timerInterval
+    timerRunningContent.classList.add('hidden')
+    timerEndContent.classList.add('visible')
 }
+window.addEventListener("load", () => {
+	startCountdown()
+    timerInterval = setInterval(startCountdown, 1000)
+})
