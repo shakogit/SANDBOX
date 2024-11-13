@@ -1,1 +1,22 @@
 Timer demo-version 11/13/2024
+
+1.Creating the Markup
+create two sections 
+a. timer section 
+b. content section. 
+contain the elements for displaying the time left in the countdown and the content section will be the element shown after the countdown is up.
+------
+2.Considering Accessibility 
+building a section that has changing information, use the "role" to represent the elements that have regularly updated text.
+------
+3. Styling the Sections 
+The timer container has the most priority when the page is first loaded so we’ll make it a fixed container that’s the full width and height of the page so no other content is visible till the countdown is up. We’ll also use an opacity styling on our content to hide it.
+------
+4. Building the Countdown Timer
+
+    1.Define a countdown value based on a specific date or time
+    2.Get the current date and subtract the value from our countdown
+    3.Carry out the subtraction function at interval of 1s
+    4.If the countdown date will be less than or equal to the current date, stop the countdown.
+
+start with defining our countdown value. There are two possible methods we can use:
