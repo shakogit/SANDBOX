@@ -1,0 +1,14 @@
+{
+  "name": "photoproject",
+  "version": "1.0.0",
+  "description": "let Scss run method",
+  "main": "index.js",
+  "scripts": {
+    "compile":"sass --watch --no-source-map main.scss style.css"
+  },
+  "author": "Shako",
+  "license": "ISC",
+  "dependencies": {
+    "sass": "^1.81.0"
+  }
+}
