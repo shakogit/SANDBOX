@@ -58,7 +58,7 @@ a {
 
 .page {
   font-family: "Poppins", sans-serif;
-  font-size: 14px;
+  font-size: 0.875rem;
   color: #fff;
   display: flex;
   justify-content: center;
@@ -124,7 +124,7 @@ a {
   height: 34px;
   width: 405px;
   border-radius: 500px;
-  font-size: 13px;
+  font-size: 0.813rem;
   color: #555A5B;
   padding-left: 20px;
   outline: none;
@@ -137,7 +137,7 @@ a {
   color: #A9B4B7;
 }
 .search__submit {
-  font-size: 15px;
+  font-size: 0.938rem;
   color: #A9B4B7;
   cursor: pointer;
   transition: all 0.2s;
@@ -165,7 +165,7 @@ a {
 }
 .nav__icon {
   color: #A9B4B7;
-  font-size: 22px;
+  font-size: 1.375rem;
   line-height: 65px;
 }
 
@@ -186,7 +186,7 @@ a {
 }
 .intro__text {
   color: #EEF3F4;
-  font-size: 16px;
+  font-size: 1rem;
   margin-top: 12px;
   line-height: 1.8;
 }
@@ -194,7 +194,7 @@ a {
 .first-heading {
   font-weight: 600;
   text-transform: uppercase;
-  font-size: 34px;
+  font-size: 2.125rem;
   line-height: 1;
 }
 @media (max-width: 355px) {
@@ -225,14 +225,14 @@ a {
   font-weight: 500;
 }
 .social__text {
-  font-size: 12px;
+  font-size: 0.75rem;
   color: #A9B4B7;
   margin-top: -5px;
 }
 
 .auth__text {
   color: #A9B4B7;
-  font-size: 12px;
+  font-size: 0.75rem;
   text-align: center;
   margin-top: 8px;
 }
@@ -288,21 +288,21 @@ a {
   right: -1px;
 }
 .upload__icon {
-  font-size: 23px;
+  font-size: 1.438rem;
 }
 .upload__text {
   color: #fff;
   margin-top: 8px;
 }
 .upload__alternative {
-  font-size: 12px;
+  font-size: 0.75rem;
   margin-top: -2px;
 }
 
 .footer {
   padding-top: 50px;
   padding-left: 35px;
-  font-size: 11px;
+  font-size: 0.688rem;
   color: rgba(169, 180, 183, 0.6);
 }
 .footer__list {
@@ -414,7 +414,7 @@ a {
 }
 .gallery__comment {
   background-color: #fff;
-  font-size: 12px;
+  font-size: 0.75rem;
   color: #555A5B;
   padding: 4px 10px;
   border-radius: 500px;
@@ -438,10 +438,10 @@ a {
 }
 .gallery__icon {
   color: #2CC695;
-  font-size: 11px;
+  font-size: 0.688rem;
 }
 .gallery__number {
-  font-size: 11px;
+  font-size: 0.688rem;
   font-weight: 600;
   margin-right: 2px;
 }
@@ -469,7 +469,7 @@ a {
   }
 }
 .step__icon {
-  font-size: 20px;
+  font-size: 1.25rem;
   height: 50px;
   width: 50px;
   border-radius: 50%;
@@ -488,13 +488,13 @@ a {
 }
 .step__text {
   color: #555A5B;
-  font-size: 12px;
+  font-size: 0.75rem;
   line-height: 1.8;
 }
 
 .second-heading {
   color: #161616;
-  font-size: 18px;
+  font-size: 1.125rem;
   font-weight: 500;
   margin-bottom: 6px;
 }
