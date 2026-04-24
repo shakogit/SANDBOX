@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ინტერაქტიული მრიცხველი</title>
+    <style>
+        /* იმპორტი თანამედროვე ფონტის - Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap');
+
+        /* ძირითადი სტილები - მუქი თემა */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Fira Code', monospace;
+            background-color: #1a1a1a; /* მუქი ფონი */
+            color: #ffffff; /* თეთრი ტექსტი */
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        /* ღილაკის კონტეინერი */
+        .container {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* ღილაკის სტილი - მინიმალისტური და ლამაზი */
+        .click-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 16px 32px;
+            font-size: 18px;
+            font-weight: 600;
+            font-family: inherit;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .click-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        .click-btn:active {
+            transform: translateY(0);
+        }
+
+        /* მრიცხველის სტილი */
+        .counter-container {
+            margin-top: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+            visibility: hidden;
+        }
+
+        .counter-container.visible {
+            opacity: 1;
+            transform: translateY(0);
+            visibility: visible;
+        }
+
+        .counter-label {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 8px;
+        }
+
+        .counter-value {
+            font-size: 48px;
+            font-weight: 600;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- ღილაკი -->
+        <button class="click-btn" id="clickBtn">Click Here</button>
+        
+        <!-- მრიცხველი (საწყისად დამალული) -->
+        <div class="counter-container" id="counterContainer">
+            <div class="counter-label">Counter</div>
+            <div class="counter-value" id="counterValue">0</div>
+        </div>
+    </div>
+
+    <script>
+        // DOM ელემენტების მიღება
+        const clickBtn = document.getElementById('clickBtn');
+        const counterContainer = document.getElementById('counterContainer');
+        const counterValue = document.getElementById('counterValue');
+
+        // მრიცხველის ცვლადი
+        let count = 0;
+
+        // ღილაკზე დაჭერის მოვლენის დამუშავება
+        clickBtn.addEventListener('click', function() {
+            // მრიცხველის გაზრდა 1-ით
+            count++;
+            
+            // მრიცხველის განახლება
+            counterValue.textContent = count;
+            
+            // მრიცხველის კონტეინერის გამოჩენა პირველი დაჭერისას
+            if (count === 1) {
+                counterContainer.classList.add('visible');
+            }
+        });
+    </script>
+</body>
+</html>
