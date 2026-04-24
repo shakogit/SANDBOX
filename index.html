@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ინტერაქტიული ღილაკი</title>
+    
+    <!-- თანამედროვე ფონტების ჩატვირთვა Google Fonts-იდან -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Roboto:wght@700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ძირითადი სტილები */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            /* მუქი თემა - გრადიენტული ფონი */
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Inter', sans-serif;
+            color: #ffffff;
+        }
+
+        /* ღილაკის კონტეინერი */
+        .container {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* სათაურის სტილი */
+        .title-text {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 700;
+            font-size: 2rem;
+            color: #ffffff;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* ღილაკის სტილიზაცია */
+        .click-button {
+            background-color: #FFB347; /* Pastel Orange ფერი გრადიენტის გარეშე */
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(255, 179, 71, 0.4);
+            font-family: 'Inter', sans-serif;
+            letter-spacing: 0.5px;
+        }
+
+        /* ღილაკის hover ეფექტი */
+        .click-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 179, 71, 0.6);
+        }
+
+        /* ღილაკის active (დაჭერის) ეფექტი */
+        .click-button:active {
+            transform: translateY(-1px);
+            box-shadow: 0 5px 20px rgba(255, 179, 71, 0.4);
+        }
+
+        /* მრიცხველის სტილი */
+        .counter-container {
+            margin-top: 40px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+            visibility: hidden;
+        }
+
+        /* მრიცხველის გამოჩენისას ანიმაცია */
+        .counter-container.visible {
+            opacity: 1;
+            transform: translateY(0);
+            visibility: visible;
+        }
+
+        .counter-label {
+            font-size: 0.9rem;
+            color: #a0a0a0;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .counter-value {
+            font-size: 4rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* მრიცხველის ქვემოთ პატარა ტექსტი */
+        .counter-footer {
+            font-size: 0.85rem;
+            color: #808080;
+            margin-top: 15px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <!-- მთავარი კონტეინერი -->
+    <div class="container">
+        <!-- სათაური ღილაკის თავზე -->
+        <h1 class="title-text">MAGIC COUNTER</h1>
+        
+        <button class="click-button" id="clickBtn">Click here!</button>
+        
+        <!-- მრიცხველი (საწყისად დამალული) -->
+        <div class="counter-container" id="counterContainer">
+            <div class="counter-label">დაჭერების რაოდენობა</div>
+            <div class="counter-value" id="counterValue">0</div>
+            <!-- პატარა ტექსტი მრიცხველის ქვემოთ ინგლისურ ენაზე -->
+            <div class="counter-footer">Keep clicking to increase the count</div>
+        </div>
+    </div>
+
+    <script>
+        // DOM ელემენტების მიღება
+        const clickButton = document.getElementById('clickBtn');
+        const counterContainer = document.getElementById('counterContainer');
+        const counterValue = document.getElementById('counterValue');
+
+        // მრიცხველის ცვლადი
+        let count = 0;
+
+        // ღილაკზე დაჭერის მოვლენის დამუშავება
+        clickButton.addEventListener('click', function() {
+            // მრიცხველის გაზრდა 1-ით
+            count++;
+            
+            // მრიცხველის განახლება
+            counterValue.textContent = count;
+            
+            // მრიცხველის კონტეინერის პირველად გამოჩენა
+            if (count === 1) {
+                counterContainer.classList.add('visible');
+            }
+        });
+    </script>
+</body>
+</html>
