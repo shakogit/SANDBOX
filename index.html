@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="ka">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ინტერაქტიული მრიცხველი</title>
+    <title>Interactive Counter</title>
     <style>
-        /* იმპორტი თანამედროვე ფონტის - Google Fonts */
+        /* Import modern font - Google Fonts */
         @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap');
 
-        /* ძირითადი სტილები - მუქი თემა */
+        /* Main styles - dark theme */
         * {
             margin: 0;
             padding: 0;
@@ -17,8 +17,8 @@
 
         body {
             font-family: 'Fira Code', monospace;
-            background-color: #1a1a1a; /* მუქი ფონი */
-            color: #ffffff; /* თეთრი ტექსტი */
+            background-color: #1a1a1a; /* Dark background */
+            color: #ffffff; /* White text */
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -26,13 +26,13 @@
             flex-direction: column;
         }
 
-        /* ღილაკის კონტეინერი */
+        /* Button container */
         .container {
             text-align: center;
             padding: 2rem;
         }
 
-        /* ღილაკის სტილი - მინიმალისტური და ლამაზი */
+        /* Button style - minimalist and beautiful */
         .click-btn {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
@@ -47,19 +47,19 @@
             box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
         }
 
-        /* Hover ეფექტი - ღილაკის აწევა და ჩრდილის გაძლიერება */
+        /* Hover effect - button lift and shadow enhancement */
         .click-btn:hover {
             transform: translateY(-3px) scale(1.05);
             box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
         }
 
-        /* Active ეფექტი - მსუბუქი scale შემცირება დაჭერისას */
+        /* Active effect - slight scale reduction on press */
         .click-btn:active {
             transform: translateY(0) scale(0.98);
             box-shadow: 0 2px 10px rgba(102, 126, 234, 0.4);
         }
 
-        /* მრიცხველის სტილი - გრადიენტული ფონით */
+        /* Counter style - with gradient background */
         .counter-container {
             margin-top: 2rem;
             opacity: 0;
@@ -91,7 +91,7 @@
             text-shadow: 0 2px 10px rgba(255, 255, 255, 0.3);
         }
 
-        /* დამატებითი ტექსტი მრიცხველის ქვემოთ */
+        /* Additional text below the counter */
         .click-message {
             margin-top: 12px;
             font-size: 14px;
@@ -102,10 +102,10 @@
 </head>
 <body>
     <div class="container">
-        <!-- ღილაკი -->
+        <!-- Button -->
         <button class="click-btn" id="clickBtn">Click Here</button>
         
-        <!-- მრიცხველი (საწყისად დამალული) -->
+        <!-- Counter (initially hidden) -->
         <div class="counter-container" id="counterContainer">
             <div class="counter-label">Counter</div>
             <div class="counter-value" id="counterValue">0</div>
@@ -114,27 +114,27 @@
     </div>
 
     <script>
-        // DOM ელემენტების მიღება
+        // Get DOM elements
         const clickBtn = document.getElementById('clickBtn');
         const counterContainer = document.getElementById('counterContainer');
         const counterValue = document.getElementById('counterValue');
         const clickMessage = document.getElementById('clickMessage');
 
-        // მრიცხველის ცვლადი
+        // Counter variable
         let count = 0;
 
-        // ღილაკზე დაჭერის მოვლენის დამუშავება
+        // Handle button click event
         clickBtn.addEventListener('click', function() {
-            // მრიცხველის გაზრდა 1-ით
+            // Increment counter by 1
             count++;
             
-            // მრიცხველის განახლება
+            // Update counter display
             counterValue.textContent = count;
             
-            // დამატებითი ტექსტის განახლება
-            clickMessage.textContent = `შენ უკვე ${count}-ჯერ დააჭირე!`;
+            // Update additional text
+            clickMessage.textContent = `You've clicked ${count} times!`;
             
-            // მრიცხველის კონტეინერის გამოჩენა პირველი დაჭერისას
+            // Show counter container on first click
             if (count === 1) {
                 counterContainer.classList.add('visible');
             }
