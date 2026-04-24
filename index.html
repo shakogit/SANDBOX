@@ -47,22 +47,29 @@
             box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
         }
 
+        /* Hover ეფექტი - ღილაკის აწევა და ჩრდილის გაძლიერება */
         .click-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
         }
 
+        /* Active ეფექტი - მსუბუქი scale შემცირება დაჭერისას */
         .click-btn:active {
-            transform: translateY(0);
+            transform: translateY(0) scale(0.98);
+            box-shadow: 0 2px 10px rgba(102, 126, 234, 0.4);
         }
 
-        /* მრიცხველის სტილი */
+        /* მრიცხველის სტილი - გრადიენტული ფონით */
         .counter-container {
             margin-top: 2rem;
             opacity: 0;
             transform: translateY(20px);
             transition: all 0.5s ease;
             visibility: hidden;
+            padding: 20px 30px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #2c3e50 0%, #4ca1af 100%);
+            box-shadow: 0 4px 15px rgba(76, 161, 175, 0.3);
         }
 
         .counter-container.visible {
@@ -73,17 +80,23 @@
 
         .counter-label {
             font-size: 14px;
-            color: #888;
+            color: #b8c5d6;
             margin-bottom: 8px;
         }
 
         .counter-value {
             font-size: 48px;
             font-weight: 600;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: #ffffff;
+            text-shadow: 0 2px 10px rgba(255, 255, 255, 0.3);
+        }
+
+        /* დამატებითი ტექსტი მრიცხველის ქვემოთ */
+        .click-message {
+            margin-top: 12px;
+            font-size: 14px;
+            color: #a0aec0;
+            font-style: italic;
         }
     </style>
 </head>
@@ -96,6 +109,7 @@
         <div class="counter-container" id="counterContainer">
             <div class="counter-label">Counter</div>
             <div class="counter-value" id="counterValue">0</div>
+            <div class="click-message" id="clickMessage"></div>
         </div>
     </div>
 
@@ -104,6 +118,7 @@
         const clickBtn = document.getElementById('clickBtn');
         const counterContainer = document.getElementById('counterContainer');
         const counterValue = document.getElementById('counterValue');
+        const clickMessage = document.getElementById('clickMessage');
 
         // მრიცხველის ცვლადი
         let count = 0;
@@ -115,6 +130,9 @@
             
             // მრიცხველის განახლება
             counterValue.textContent = count;
+            
+            // დამატებითი ტექსტის განახლება
+            clickMessage.textContent = `შენ უკვე ${count}-ჯერ დააჭირე!`;
             
             // მრიცხველის კონტეინერის გამოჩენა პირველი დაჭერისას
             if (count === 1) {
