@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Counter</title>
+    <style>
+        /* Import modern font - Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap');
+
+        /* Main styles - dark theme */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Fira Code', monospace;
+            background-color: #1a1a1a; /* Dark background */
+            color: #ffffff; /* White text */
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        /* Button container */
+        .container {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Button style - minimalist and beautiful */
+        .click-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 16px 32px;
+            font-size: 18px;
+            font-weight: 600;
+            font-family: inherit;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Hover effect - button lift and shadow enhancement */
+        .click-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+        }
+
+        /* Active effect - slight scale reduction on press */
+        .click-btn:active {
+            transform: translateY(0) scale(0.98);
+            box-shadow: 0 2px 10px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Counter style - with gradient background */
+        .counter-container {
+            margin-top: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+            visibility: hidden;
+            padding: 20px 30px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #2c3e50 0%, #4ca1af 100%);
+            box-shadow: 0 4px 15px rgba(76, 161, 175, 0.3);
+        }
+
+        .counter-container.visible {
+            opacity: 1;
+            transform: translateY(0);
+            visibility: visible;
+        }
+
+        .counter-label {
+            font-size: 14px;
+            color: #b8c5d6;
+            margin-bottom: 8px;
+        }
+
+        .counter-value {
+            font-size: 48px;
+            font-weight: 600;
+            color: #ffffff;
+            text-shadow: 0 2px 10px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Additional text below the counter */
+        .click-message {
+            margin-top: 12px;
+            font-size: 14px;
+            color: #a0aec0;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Button -->
+        <button class="click-btn" id="clickBtn">Click Here</button>
+        
+        <!-- Counter (initially hidden) -->
+        <div class="counter-container" id="counterContainer">
+            <div class="counter-label">Counter</div>
+            <div class="counter-value" id="counterValue">0</div>
+            <div class="click-message" id="clickMessage"></div>
+        </div>
+    </div>
+
+    <script>
+        // Get DOM elements
+        const clickBtn = document.getElementById('clickBtn');
+        const counterContainer = document.getElementById('counterContainer');
+        const counterValue = document.getElementById('counterValue');
+        const clickMessage = document.getElementById('clickMessage');
+
+        // Counter variable
+        let count = 0;
+
+        // Handle button click event
+        clickBtn.addEventListener('click', function() {
+            // Increment counter by 1
+            count++;
+            
+            // Update counter display
+            counterValue.textContent = count;
+            
+            // Update additional text
+            clickMessage.textContent = `You've clicked ${count} times!`;
+            
+            // Show counter container on first click
+            if (count === 1) {
+                counterContainer.classList.add('visible');
+            }
+        });
+    </script>
+</body>
+</html>
